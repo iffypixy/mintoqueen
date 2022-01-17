@@ -8,8 +8,8 @@ hence, it stores several packages that are tightly related to each other.
 
 |     package      | description |
 | :--------------: | :---------: |
-| [gerard](gerard) |     api     |
-|  [frank](frank)  |   client    |
+| [gerard](gerard) |   client    |
+|  [frank](frank)  |     api     |
 
 ## motivation
 

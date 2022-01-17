@@ -1,0 +1,15 @@
+{
+  "name": "jerard",
+  "version": "1.0.0",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ansatjrt/mintoqueen.git"
+  },
+  "author": "Ansat Jartybayev <ansatjrt@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ansatjrt/mintoqueen/issues"
+  },
+  "homepage": "https://github.com/ansatjrt/mintoqueen#readme"
+}

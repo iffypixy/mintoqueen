@@ -10,5 +10,8 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ansatjrt/mintoqueen/issues"
+  },
+  "devDependencies": {
+    "prettier": "^2.5.1"
   }
 }

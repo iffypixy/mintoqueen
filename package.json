@@ -11,6 +11,7 @@
   "bugs": {
     "url": "https://github.com/ansatjrt/mintoqueen/issues"
   },
+  "homepage": "https://github.com/ansatjrt/mintoqueen#readme",
   "devDependencies": {
     "@commitlint/cli": "^16.0.2",
     "@commitlint/config-conventional": "^16.0.0",

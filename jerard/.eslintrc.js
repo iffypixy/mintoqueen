@@ -7,8 +7,8 @@ module.exports = {
     },
     sourceType: "module",
     ecmaVersion: "latest",
-    tsconfigRootDir: "./",
-    project: "./tsconfig.json",
+    tsconfigRootDir: __dirname,
+    project: "./tsconfig.eslint.json",
   },
   extends: [
     "eslint:recommended",
@@ -31,7 +31,7 @@ module.exports = {
     },
     "import/resolver": {
       typescript: {
-        project: "./tsconfig.json",
+        project: "./tsconfig.eslint.json",
         alwaysTryTypes: true,
       },
     },

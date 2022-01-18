@@ -1,1 +1,1 @@
-export {reducer as authReducer} from "./model";
+export {reducer as authReducer, selectors as authSelectors} from "./model";

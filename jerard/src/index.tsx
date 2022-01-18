@@ -1,6 +1,8 @@
 import * as React from "react";
 import {render} from "react-dom";
 
+import {App} from "@app/client";
+
 const root = document.getElementById("root");
 
-render(<h1>Hello!</h1>, root);
+render(<App />, root);

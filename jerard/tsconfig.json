@@ -8,6 +8,12 @@
     "allowJs": true,
     "checkJs": true,
     "baseUrl": "./",
+    "paths": {
+      "@features/*": ["./src/features", "./src/features/*"],
+      "@shared/*": ["./src/shared", "./src/shared/*"],
+      "@pages/*": ["./src/pages", "./src/pages/*"],
+      "@app/*": ["./src/app", "./src/app/*"]
+    },
     "jsx": "preserve",
     "isolatedModules": true,
     "esModuleInterop": true,

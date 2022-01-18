@@ -223,9 +223,13 @@ dist
 # built vscode extensions
 *.vsix
 
-## vscode patch 
+## vscode patch
 
 # ignore all local history of files
 .history
 .ionide
 
+## builds
+build/
+dist/
+prod/

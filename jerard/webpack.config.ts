@@ -1,6 +1,6 @@
 import * as path from "path";
 import * as webpack from "webpack";
-import * as HTMLWebpackPlugin from "html-webpack-plugin";
+import HTMLWebpackPlugin from "html-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import {TsconfigPathsPlugin} from "tsconfig-paths-webpack-plugin";
 import "webpack-dev-server";

@@ -1,6 +1,6 @@
 import {createReducer} from "@reduxjs/toolkit";
 
-interface AuthState {
+export interface AuthState {
   isAuthenticated: boolean;
 }
 

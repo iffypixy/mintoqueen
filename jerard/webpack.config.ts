@@ -3,6 +3,7 @@ import * as webpack from "webpack";
 import HTMLWebpackPlugin from "html-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import {TsconfigPathsPlugin} from "tsconfig-paths-webpack-plugin";
+import * as Dotenv from "dotenv-webpack";
 import "webpack-dev-server";
 
 interface ConfigurationProps {
@@ -49,6 +50,9 @@ export default ({env}: ConfigurationProps): webpack.Configuration => {
           enabled: true,
           files: "./{src,typings}/**/*.{ts,tsx,js,jsx,json}",
         },
+      }),
+      new Dotenv({
+        path: `./.env.${env}.local`,
       }),
     ],
     module: {

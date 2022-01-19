@@ -1,3 +1,5 @@
 import * as React from "react";
 
-export const App: React.FC = () => null;
+import {CredentialsObtainer} from "@features/auth";
+
+export const App: React.FC = () => <CredentialsObtainer />;

@@ -15,14 +15,12 @@ export const Authenticated: React.FC<AuthenticatedProps> = ({
 }) => {
   const credentials = useSelector(selectors.credentials)!;
   const isAuthenticated = useSelector(selectors.isAuthenticated);
-  const isCredentialsFetchPending = useSelector(
-    selectors.isCredentialsFetchPending,
-  );
+  const isFetching = useSelector(selectors.isCredentialsFetchPending);
 
   return (
     <Branch if={isAuthenticated}>
       <>{render({credentials})}</>
-      <Branch if={isCredentialsFetchPending}>
+      <Branch if={isFetching}>
         {/* @todo: to come up with the special loader for credentials */}
         <span>Loading...</span>
         <>{children}</>

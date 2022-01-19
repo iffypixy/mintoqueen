@@ -3,7 +3,7 @@ import * as webpack from "webpack";
 import HTMLWebpackPlugin from "html-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import {TsconfigPathsPlugin} from "tsconfig-paths-webpack-plugin";
-import * as Dotenv from "dotenv-webpack";
+import Dotenv from "dotenv-webpack";
 import "webpack-dev-server";
 
 interface ConfigurationProps {

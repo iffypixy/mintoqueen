@@ -1,2 +1,2 @@
-export {ThemingProvider} from "./theming-provider";
+export {ThemingProvider} from "./lib/theming-provider";
 export {reducer as themingReducer} from "./model";

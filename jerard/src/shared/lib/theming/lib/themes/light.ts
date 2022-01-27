@@ -5,14 +5,11 @@ import {common} from "./common";
 export const light = createTheme({
   ...common,
   palette: {
-    primary: {},
-    secondary: {},
     success: {
       light: "#9AE6B4",
       main: "#48BB78",
       dark: "#2F855A",
     },
-    warning: {},
     error: {
       light: "#FEB2B2",
       main: "#F56565",

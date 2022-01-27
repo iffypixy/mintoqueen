@@ -90,7 +90,7 @@ export default ({env}: ConfigurationProps): webpack.Configuration => {
       historyApiFallback: true,
       static: {
         directory: path.join(__dirname, "public"),
-        publicPath: "/public",
+        publicPath: "/static",
       },
     },
     stats: "errors-warnings",

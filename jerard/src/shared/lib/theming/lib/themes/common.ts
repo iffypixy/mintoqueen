@@ -18,7 +18,6 @@ export const common: ThemeOptions = {
   },
   direction: "ltr",
   typography: {
-    htmlFontSize: 10,
     fontFamily,
     fontWeightLight: 300,
     fontWeightRegular: 400,

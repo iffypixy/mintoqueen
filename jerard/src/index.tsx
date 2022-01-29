@@ -5,6 +5,7 @@ import {BrowserRouter} from "react-router-dom";
 
 import {App} from "@app/client";
 import {store} from "@shared/lib/store";
+import {ThemeProvider} from "@shared/lib/theming";
 
 import "@shared/lib/i18n";
 
@@ -14,7 +15,9 @@ render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

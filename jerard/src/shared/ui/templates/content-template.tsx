@@ -5,16 +5,10 @@ import {MainTemplate} from "./main-template";
 
 export const ContentTemplate: React.FC = ({children}) => (
   <MainTemplate>
-    <Wrapper>{children}</Wrapper>
+    {children}
     <Navigation />
   </MainTemplate>
 );
-
-const Wrapper = styled("div")`
-  width: 100%;
-  height: 0;
-  min-height: 100vh;
-`;
 
 const Navigation = styled("nav")`
   width: 75rem;

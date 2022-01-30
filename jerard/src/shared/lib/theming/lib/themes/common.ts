@@ -14,7 +14,7 @@ export const common: ThemeOptions = {
     },
   },
   shape: {
-    borderRadius: 6,
+    borderRadius: "8px",
   },
   direction: "ltr",
   typography: {
@@ -31,31 +31,31 @@ export const common: ThemeOptions = {
     },
     h2: {
       fontFamily,
-      fontSize: "1.8rem",
+      fontSize: "2.8rem",
       fontWeight: 400,
       lineHeight: 1.4,
     },
     h3: {
       fontFamily,
-      fontSize: "1.6rem",
+      fontSize: "1.8rem",
       fontWeight: 500,
       lineHeight: 1.4,
     },
     h4: {
       fontFamily,
-      fontSize: "1.4rem",
+      fontSize: "1.6rem",
       fontWeight: 500,
       lineHeight: 1.4,
     },
     h5: {
       fontFamily,
-      fontSize: "1.2rem",
+      fontSize: "1.4rem",
       fontWeight: 500,
       lineHeight: 1.4,
     },
     h6: {
       fontFamily,
-      fontSize: "1rem",
+      fontSize: "1.2rem",
       fontWeight: 500,
       lineHeight: 1.4,
     },

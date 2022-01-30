@@ -1,4 +1,4 @@
-import {styled, css} from "@mui/system";
+import {styled, css} from "@mui/material/styles";
 
 interface LayoutProps {
   w?: string | number;
@@ -40,15 +40,18 @@ const mixin = (props: LayoutProps) => css`
   height: ${size(props.h)};
   justify-content: ${prop(props.justify)};
   align-items: ${prop(props.align)};
-  padding: ${size(props.p)};
-  padding-left: ${size(props.pl)};
-  padding-right: ${size(props.pr)};
-  padding-top: ${size(props.pt)};
-  padding-bottom: ${size(props.pb)};
-  padding-inline-start: ${size(props.px)};
-  padding-inline-end: ${size(props.px)};
-  padding-top: ${size(props.py)};
-  padding-bottom: ${size(props.py)};
+  padding-left: ${size(props.pl || props.p)};
+  padding-right: ${size(props.pr || props.p)};
+  padding-top: ${size(props.pt || props.py || props.p)};
+  padding-bottom: ${size(props.pb || props.py || props.p)};
+  padding-inline-start: ${size(props.px || props.p)};
+  padding-inline-end: ${size(props.px || props.p)};
+  margin-left: ${size(props.ml || props.m)};
+  margin-right: ${size(props.mr || props.m)};
+  margin-top: ${size(props.mt || props.my || props.m)};
+  margin-bottom: ${size(props.mb || props.my || props.m)};
+  margin-inline-start: ${size(props.mx || props.m)};
+  margin-inline-end: ${size(props.mx || props.m)};
 `;
 
 const propsNotToForward = [

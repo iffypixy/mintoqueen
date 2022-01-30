@@ -31,28 +31,30 @@ interface LayoutProps {
   reverse?: boolean;
 }
 
-const prop = (value: any) => value || "initial";
 const size = (value: any) =>
-  typeof value === "number" ? `${value}rem` : prop(value);
+  typeof value === "number" ? `${value}rem` : value;
 
-const mixin = (props: LayoutProps) => css`
-  width: ${size(props.w)};
-  height: ${size(props.h)};
-  justify-content: ${prop(props.justify)};
-  align-items: ${prop(props.align)};
-  padding-left: ${size(props.pl || props.p)};
-  padding-right: ${size(props.pr || props.p)};
-  padding-top: ${size(props.pt || props.py || props.p)};
-  padding-bottom: ${size(props.pb || props.py || props.p)};
-  padding-inline-start: ${size(props.px || props.p)};
-  padding-inline-end: ${size(props.px || props.p)};
-  margin-left: ${size(props.ml || props.m)};
-  margin-right: ${size(props.mr || props.m)};
-  margin-top: ${size(props.mt || props.my || props.m)};
-  margin-bottom: ${size(props.mb || props.my || props.m)};
-  margin-inline-start: ${size(props.mx || props.m)};
-  margin-inline-end: ${size(props.mx || props.m)};
-`;
+const mixin = (props: LayoutProps) =>
+  css({
+    width: size(props.w),
+    height: size(props.h),
+    justifyContent: props.justify,
+    alignItems: props.align,
+    padding: size(props.p),
+    paddingLeft: size(props.pl),
+    paddingRight: size(props.pr),
+    paddingTop: size(props.pt || props.py),
+    paddingBottom: size(props.pb || props.py),
+    paddingInlineStart: size(props.px),
+    paddingInlineEnd: size(props.px),
+    margin: size(props.m),
+    marginLeft: size(props.ml),
+    marginRight: size(props.mr),
+    marginBottom: size(props.mb || props.my),
+    marginTop: size(props.mt || props.my),
+    marginInlineStart: size(props.mx),
+    marginInlineEnd: size(props.mx),
+  });
 
 const propsNotToForward = [
   "w",

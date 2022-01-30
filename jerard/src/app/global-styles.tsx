@@ -8,6 +8,18 @@ const styles = (theme: Theme) => css`
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     box-sizing: border-box;
+
+    @media only screen and (max-width: ${theme.breakpoints.values.lg}px) {
+      font-size: 9px;
+    }
+
+    @media only screen and (max-width: ${theme.breakpoints.values.md}px) {
+      font-size: 8px;
+    }
+
+    @media only screen and (max-width: ${theme.breakpoints.values.sm}px) {
+      font-size: 6px;
+    }
   }
 
   *,
@@ -20,7 +32,7 @@ const styles = (theme: Theme) => css`
 
   body {
     color: ${theme.palette.text.primary};
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-family: ${theme.typography.fontFamily};
     font-weight: ${theme.typography.fontWeightRegular};
     background-color: ${theme.palette.background.default};

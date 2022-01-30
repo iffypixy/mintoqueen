@@ -6,11 +6,11 @@ export const common: ThemeOptions = {
   breakpoints: {
     keys: ["xs", "sm", "md", "lg", "xl"],
     values: {
-      xs: 576,
-      sm: 768,
-      md: 992,
-      lg: 1200,
-      xl: 1400,
+      xs: 320,
+      sm: 481,
+      md: 641,
+      lg: 961,
+      xl: 1025,
     },
   },
   shape: {
@@ -25,8 +25,8 @@ export const common: ThemeOptions = {
     fontWeightBold: 700,
     h1: {
       fontFamily,
-      fontSize: "4.8rem",
-      fontWeight: 400,
+      fontSize: "5rem",
+      fontWeight: 700,
       lineHeight: 1,
     },
     h2: {

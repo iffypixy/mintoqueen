@@ -1,4 +1,4 @@
-import {styled, css} from "@mui/material/styles";
+import {styled, css} from "@mui/material";
 
 export const H1 = styled("h1")`
   ${({theme}) => css`

@@ -1,5 +1,5 @@
 import * as React from "react";
-import {styled} from "@mui/material/styles";
+import {styled} from "@mui/material";
 
 import {MainTemplate, CenterContent} from "@shared/ui/templates";
 import {Col, Row} from "@shared/lib/layout";
@@ -22,10 +22,10 @@ export const LoginPage: React.FC = () => {
             </Row>
           </Col>
 
-          <Col w="100%" align="center" gap={4}>
-            <FormWrapper w={50} p={5}>
+          <Col w="100%" align="center" gap={3}>
+            <FormWrapper w={50} p={4}>
               <form>
-                <Col gap={4}>
+                <Col gap={2}>
                   <Row w="100%" justify="center">
                     <OutlinedInput
                       type="text"

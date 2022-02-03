@@ -11,12 +11,13 @@ export const Button = styled(ButtonBase, {
   shouldForwardProp: (prop: string) => !propsNotToForward.includes(prop),
 })<ButtonProps>`
   ${({fullWidth, disabled, theme}) => css`
-    color: #ffffff;
+    color: ${theme.palette.primary.contrastText};
     font-family: ${theme.typography.fontFamily};
     font-weight: ${theme.typography.fontWeightMedium};
-    background-color: ${disabled ? "#F8C7A0" : "#F4A261"};
-    border-radius: ${theme.shape.borderRadius};
     width: ${fullWidth ? "100%" : "initial"};
+    background-color: ${theme.palette.primary.main};
+    border-radius: ${theme.shape.borderRadius};
+    opacity: ${disabled ? 0.4 : 1};
   `};
 
   font-size: 1.6rem;

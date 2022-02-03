@@ -9,16 +9,24 @@ const styles = (theme: Theme) => css`
     -webkit-text-size-adjust: 100%;
     box-sizing: border-box;
 
+    @media only screen and (max-width: ${theme.breakpoints.values.xl}px) {
+      font-size: 9.5px;
+    }
+
     @media only screen and (max-width: ${theme.breakpoints.values.lg}px) {
       font-size: 9px;
     }
 
     @media only screen and (max-width: ${theme.breakpoints.values.md}px) {
-      font-size: 8px;
+      font-size: 8.5px;
     }
 
     @media only screen and (max-width: ${theme.breakpoints.values.sm}px) {
-      font-size: 6px;
+      font-size: 8px;
+    }
+
+    @media only screen and (max-width: ${theme.breakpoints.values.xs}px) {
+      font-size: 7px;
     }
   }
 
@@ -202,6 +210,18 @@ const styles = (theme: Theme) => css`
 
   [hidden] {
     display: none;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    transition-delay: 3600s;
   }
 `;
 

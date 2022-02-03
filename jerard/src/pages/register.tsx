@@ -1,16 +1,62 @@
 import * as React from "react";
-import {styled} from "@mui/material/styles";
+import {styled} from "@mui/material";
+import {useForm} from "react-hook-form";
 
 import {MainTemplate, CenterContent} from "@shared/ui/templates";
 import {Col, Row} from "@shared/lib/layout";
 import {Button, Link, OutlinedInput, Text, H1} from "@shared/ui/atoms";
+import {regex} from "@shared/lib/regex";
+
+interface Form {
+  username: string;
+  email: string;
+  password: string;
+  confirm: string;
+}
 
 export const RegisterPage: React.FC = () => {
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    trigger,
+    formState: {isValid, errors},
+  } = useForm<Form>({
+    mode: "onChange",
+    defaultValues: {
+      username: "",
+      email: "",
+      password: "",
+      confirm: "",
+    },
+  });
+
+  const form = {
+    password: register("password", {
+      minLength: {
+        value: 8,
+        message: "Password must contain at least 8 characters",
+      },
+      maxLength: {
+        value: 100,
+        message: "Password must not exceed 100 characters",
+      },
+      required: {
+        value: true,
+        message: "Password is required",
+      },
+    }),
+  };
+
+  const handleFormSubmit = (data: Form) => {
+    console.log(data);
+  };
+
   return (
     <MainTemplate>
       <CenterContent>
-        <Col w="100%" align="center" gap={8}>
-          <Col w="100%" gap={3}>
+        <Col w="100%" align="center" gap={7}>
+          <Col w="100%" gap={2}>
             <Row w="100%" justify="center">
               <H1>Join mintoqueen</H1>
             </Row>
@@ -22,50 +68,94 @@ export const RegisterPage: React.FC = () => {
             </Row>
           </Col>
 
-          <Col w="100%" align="center" gap={4}>
-            <FormWrapper w={50} p={5}>
-              <form>
-                <Col gap={4}>
-                  <Row w="100%" justify="center">
-                    <OutlinedInput
-                      type="text"
-                      name="username"
-                      label="Username"
-                      fullWidth
-                    />
-                  </Row>
+          <Col w="100%" align="center" gap={3}>
+            <FormWrapper w={50} p={4}>
+              <form onSubmit={handleSubmit(handleFormSubmit)}>
+                <Col gap={3}>
+                  <Col gap={2}>
+                    <Row w="100%" justify="center">
+                      <OutlinedInput
+                        type="text"
+                        label="Username"
+                        error={!!errors.username}
+                        helperText={errors.username?.message}
+                        fullWidth
+                        {...register("username", {
+                          required: {
+                            value: true,
+                            message: "Username is required",
+                          },
+                          minLength: {
+                            value: 5,
+                            message:
+                              "Username must contain at least 5 characters",
+                          },
+                          maxLength: {
+                            value: 20,
+                            message: "Username must not exceed 20 characters",
+                          },
+                        })}
+                      />
+                    </Row>
 
-                  <Row w="100%" justify="center">
-                    <OutlinedInput
-                      type="email"
-                      name="email"
-                      label="Email"
-                      fullWidth
-                    />
-                  </Row>
+                    <Row w="100%" justify="center">
+                      <OutlinedInput
+                        type="email"
+                        label="Email"
+                        error={!!errors.email}
+                        helperText={errors.email?.message}
+                        fullWidth
+                        {...register("email", {
+                          required: {
+                            value: true,
+                            message: "Email is required",
+                          },
+                          pattern: {
+                            value: regex.email,
+                            message: "Email is not valid",
+                          },
+                        })}
+                      />
+                    </Row>
 
-                  <Row w="100%" justify="space-between">
-                    <Row w="48%">
+                    <Row w="100%">
                       <OutlinedInput
                         type="password"
-                        name="password"
                         label="Password"
+                        error={!!errors.password}
+                        helperText={errors.password?.message}
                         fullWidth
+                        {...form.password}
+                        onChange={(event) => {
+                          form.password.onChange(event).then(() => {
+                            trigger("confirm");
+                          });
+                        }}
                       />
                     </Row>
 
-                    <Row w="48%">
+                    <Row w="100%">
                       <OutlinedInput
                         type="password"
-                        name="confirm"
                         label="Confirm"
+                        error={!!errors.confirm}
+                        helperText={errors.confirm?.message}
                         fullWidth
+                        {...register("confirm", {
+                          required: {
+                            value: true,
+                            message: "Password confirm is required",
+                          },
+                          validate: (v) =>
+                            v === getValues().password ||
+                            "Passwords do not match",
+                        })}
                       />
                     </Row>
-                  </Row>
+                  </Col>
 
                   <Row w="100%">
-                    <Button fullWidth disabled>
+                    <Button fullWidth type="submit" disabled={!isValid}>
                       Create an account
                     </Button>
                   </Row>
@@ -87,6 +177,6 @@ export const RegisterPage: React.FC = () => {
 };
 
 const FormWrapper = styled(Col)`
-  border: 1px solid #e3e3e3;
+  border: 1px solid ${({theme}) => theme.palette.divider};
   border-radius: ${({theme}) => theme.shape.borderRadius};
 `;

@@ -11,7 +11,7 @@ export const Link = styled(RouterLink, {
   shouldForwardProp: (prop: string) => !propsNotToForward.includes(prop),
 })<LinkProps>`
   ${({theme, underline}) => css`
-    color: #f4a261;
+    color: ${theme.palette.text.primary};
     font-family: ${theme.typography.fontFamily};
     font-weight: ${theme.typography.fontWeightRegular};
     text-decoration: ${underline ? "underline" : "none"};

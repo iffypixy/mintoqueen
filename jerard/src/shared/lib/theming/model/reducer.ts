@@ -3,7 +3,7 @@ import {createReducer, PayloadAction} from "@reduxjs/toolkit";
 import {SetThemePayload} from "./actions";
 import * as actions from "./actions";
 
-export type Theme = "light" | "dark";
+export type Theme = "light:default" | "dark:default";
 
 export interface ThemingState {
   theme: Theme;
@@ -11,7 +11,7 @@ export interface ThemingState {
 
 export const reducer = createReducer<ThemingState>(
   {
-    theme: "light",
+    theme: "light:default",
   },
   {
     [actions.setTheme.type]: (

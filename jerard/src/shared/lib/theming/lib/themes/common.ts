@@ -23,6 +23,8 @@ export const common: ThemeOptions = {
     fontWeightRegular: 400,
     fontWeightMedium: 500,
     fontWeightBold: 700,
+    htmlFontSize: 10,
+    fontSize: 16,
     h1: {
       fontFamily,
       fontSize: "5rem",
@@ -58,6 +60,18 @@ export const common: ThemeOptions = {
       fontSize: "1.2rem",
       fontWeight: 500,
       lineHeight: 1.4,
+    },
+  },
+  palette: {
+    success: {
+      light: "#9AE6B4",
+      main: "#48BB78",
+      dark: "#2F855A",
+    },
+    error: {
+      light: "#FEB2B2",
+      main: "#F56565",
+      dark: "#C53030",
     },
   },
 };

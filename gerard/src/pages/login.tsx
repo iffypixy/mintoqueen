@@ -1,11 +1,44 @@
 import * as React from "react";
 import {styled} from "@mui/material";
+import {useForm} from "react-hook-form";
 
+import {Button, Link, OutlinedInput, Text, H1} from "@shared/ui/atoms";
 import {MainTemplate, CenterContent} from "@shared/ui/templates";
 import {Col, Row} from "@shared/lib/layout";
-import {Button, Link, OutlinedInput, Text, H1} from "@shared/ui/atoms";
+
+interface Form {
+  username: string;
+  password: string;
+}
 
 export const LoginPage: React.FC = () => {
+  const {register, formState, handleSubmit} = useForm<Form>({
+    mode: "onChange",
+    defaultValues: {
+      username: "",
+      password: "",
+    },
+  });
+
+  const form = {
+    username: register("username", {
+      required: {
+        value: true,
+        message: "Username is required",
+      },
+    }),
+    password: register("password", {
+      required: {
+        value: true,
+        message: "Password is required",
+      },
+    }),
+  };
+
+  const handleFormSubmit = (data: Form) => {
+    console.log(data);
+  };
+
   return (
     <MainTemplate>
       <CenterContent>
@@ -24,28 +57,32 @@ export const LoginPage: React.FC = () => {
 
           <Col w="100%" align="center" gap={3}>
             <FormWrapper w={50} p={4}>
-              <form>
+              <form onSubmit={handleSubmit(handleFormSubmit)}>
                 <Col gap={2}>
                   <Row w="100%" justify="center">
                     <OutlinedInput
                       type="text"
-                      name="username"
                       label="Username"
+                      error={!!formState.errors.username}
+                      helperText={formState.errors.username?.message}
                       fullWidth
+                      {...form.username}
                     />
                   </Row>
 
                   <Row w="100%" justify="center">
                     <OutlinedInput
                       type="password"
-                      name="password"
                       label="Password"
+                      error={!!formState.errors.password}
+                      helperText={formState.errors.password?.message}
                       fullWidth
+                      {...form.password}
                     />
                   </Row>
 
                   <Row w="100%">
-                    <Button fullWidth disabled>
+                    <Button fullWidth disabled={!formState.isValid}>
                       Sign in
                     </Button>
                   </Row>

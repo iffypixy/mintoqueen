@@ -2,9 +2,9 @@ import * as React from "react";
 import {styled} from "@mui/material";
 import {useForm} from "react-hook-form";
 
+import {Button, Link, OutlinedInput, Text, H1} from "@shared/ui/atoms";
 import {MainTemplate, CenterContent} from "@shared/ui/templates";
 import {Col, Row} from "@shared/lib/layout";
-import {Button, Link, OutlinedInput, Text, H1} from "@shared/ui/atoms";
 import {regex} from "@shared/lib/regex";
 
 interface Form {
@@ -15,23 +15,47 @@ interface Form {
 }
 
 export const RegisterPage: React.FC = () => {
-  const {
-    register,
-    handleSubmit,
-    getValues,
-    trigger,
-    formState: {isValid, errors},
-  } = useForm<Form>({
-    mode: "onChange",
-    defaultValues: {
-      username: "",
-      email: "",
-      password: "",
-      confirm: "",
+  const {register, handleSubmit, getValues, trigger, formState} = useForm<Form>(
+    {
+      mode: "onChange",
+      defaultValues: {
+        username: "",
+        email: "",
+        password: "",
+        confirm: "",
+      },
     },
-  });
+  );
 
   const form = {
+    username: register("username", {
+      required: {
+        value: true,
+        message: "Username is required",
+      },
+      minLength: {
+        value: 5,
+        message: "Username must contain at least 5 characters",
+      },
+      maxLength: {
+        value: 20,
+        message: "Username must not exceed 20 characters",
+      },
+      pattern: {
+        value: regex.username,
+        message: "Username is not valid",
+      },
+    }),
+    email: register("email", {
+      required: {
+        value: true,
+        message: "Email is required",
+      },
+      pattern: {
+        value: regex.email,
+        message: "Email is not valid",
+      },
+    }),
     password: register("password", {
       minLength: {
         value: 8,
@@ -45,6 +69,13 @@ export const RegisterPage: React.FC = () => {
         value: true,
         message: "Password is required",
       },
+    }),
+    confirm: register("confirm", {
+      required: {
+        value: true,
+        message: "Password confirm is required",
+      },
+      validate: (v) => v === getValues().password || "Passwords do not match",
     }),
   };
 
@@ -77,24 +108,10 @@ export const RegisterPage: React.FC = () => {
                       <OutlinedInput
                         type="text"
                         label="Username"
-                        error={!!errors.username}
-                        helperText={errors.username?.message}
+                        error={!!formState.errors.username}
+                        helperText={formState.errors.username?.message}
                         fullWidth
-                        {...register("username", {
-                          required: {
-                            value: true,
-                            message: "Username is required",
-                          },
-                          minLength: {
-                            value: 5,
-                            message:
-                              "Username must contain at least 5 characters",
-                          },
-                          maxLength: {
-                            value: 20,
-                            message: "Username must not exceed 20 characters",
-                          },
-                        })}
+                        {...form.username}
                       />
                     </Row>
 
@@ -102,19 +119,10 @@ export const RegisterPage: React.FC = () => {
                       <OutlinedInput
                         type="email"
                         label="Email"
-                        error={!!errors.email}
-                        helperText={errors.email?.message}
+                        error={!!formState.errors.email}
+                        helperText={formState.errors.email?.message}
                         fullWidth
-                        {...register("email", {
-                          required: {
-                            value: true,
-                            message: "Email is required",
-                          },
-                          pattern: {
-                            value: regex.email,
-                            message: "Email is not valid",
-                          },
-                        })}
+                        {...form.email}
                       />
                     </Row>
 
@@ -122,8 +130,8 @@ export const RegisterPage: React.FC = () => {
                       <OutlinedInput
                         type="password"
                         label="Password"
-                        error={!!errors.password}
-                        helperText={errors.password?.message}
+                        error={!!formState.errors.password}
+                        helperText={formState.errors.password?.message}
                         fullWidth
                         {...form.password}
                         onChange={(event) => {
@@ -138,24 +146,20 @@ export const RegisterPage: React.FC = () => {
                       <OutlinedInput
                         type="password"
                         label="Confirm"
-                        error={!!errors.confirm}
-                        helperText={errors.confirm?.message}
+                        error={!!formState.errors.confirm}
+                        helperText={formState.errors.confirm?.message}
                         fullWidth
-                        {...register("confirm", {
-                          required: {
-                            value: true,
-                            message: "Password confirm is required",
-                          },
-                          validate: (v) =>
-                            v === getValues().password ||
-                            "Passwords do not match",
-                        })}
+                        {...form.confirm}
                       />
                     </Row>
                   </Col>
 
                   <Row w="100%">
-                    <Button fullWidth type="submit" disabled={!isValid}>
+                    <Button
+                      fullWidth
+                      type="submit"
+                      disabled={!formState.isValid}
+                    >
                       Create an account
                     </Button>
                   </Row>

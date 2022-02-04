@@ -1,5 +1,7 @@
 import {styled, css, ButtonBase} from "@mui/material";
 
+import {opacify} from "@shared/lib/colors";
+
 interface ButtonProps {
   fullWidth?: boolean;
   disabled?: boolean;
@@ -17,7 +19,12 @@ export const Button = styled(ButtonBase, {
     width: ${fullWidth ? "100%" : "initial"};
     background-color: ${theme.palette.primary.main};
     border-radius: ${theme.shape.borderRadius};
+    transition: box-shadow 0.2s linear;
     opacity: ${disabled ? 0.4 : 1};
+
+    &:focus {
+      box-shadow: 0 0 0 4px ${opacify(theme.palette.primary.main, 0.8)};
+    }
   `};
 
   font-size: 1.6rem;
